@@ -1,0 +1,193 @@
+﻿* GETTING STARTED
+Make sure that the Django framework and Django rest framework are installed in your host computer.
+
+
+* API ENDPOINTS
+* admin/
+* LSM/ Libary_user/
+* LSM/ Libary_user_detail/<int:pk>
+* LSM/ Book/
+* LSM/ Book_detail/<int:pk>
+* LSM/ Book_info
+* LSM/ Book_borrow/
+* LSM/ Book_return/
+* LSM/ Book_Borrow_list/
+
+
+
+
+* /LSM/Libary_user/
+The LibraryUserView class manages the /LSM/Library_user/ endpoint within the Library Management System API. This endpoint supports two primary HTTP methods: GET and POST.
+The /LSM/Library_user/ endpoint enables the addition of a new user to the Library Management System. This functionality is achieved through the HTTP POST method, allowing developers to submit user details such as name, email, and membership date in the request body. To utilize this endpoint, a valid request should be constructed with the necessary information included.It also list all users
+
+
+[
+    {
+        "UserID": 1,
+        "Name": "test_user",
+        "Email": "test_user@gmail.com",
+        "MembershipDate": "2024-02-01"
+    }
+]
+
+
+* /LSM/Libary_user_detail/<int:pk>
+The /LSM/Library_user_detail/{userID}/ endpoint allows developers to retrieve detailed information about a specific user within the Library Management System using their unique UserID. This functionality is accomplished through the HTTP GET method, requiring the inclusion of the user's identifier in the endpoint URL. For instance:
+{
+    "UserID": 1,
+    "Name": "test_user",
+    "Email": "test_user@gmail.com",
+    "MembershipDate": "2024-02-01"
+}
+
+
+* /LSM/Book/
+
+
+The /LSM/Book/ endpoint facilitates the addition of a new book record to the Library Management System using the HTTP POST method. Developers can submit the necessary details, including the book's title, ISBN (International Standard Book Number), published date, and genre in the request body. An example request is illustrated below:
+GET /LSM/Book/
+HTTP 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+
+[
+    {
+        "BookID": 2,
+        "Book_number": 5,
+        "Title": "ABC",
+        "ISBN": "1234",
+        "PublishedDate": "2024-02-01",
+        "Genre": "ok"
+    },
+    {
+        "BookID": 3,
+        "Book_number": 5,
+        "Title": "ABCD",
+        "ISBN": "12345",
+        "PublishedDate": "2024-02-01",
+        "Genre": "koo"
+    }
+]
+The /LSM/Book/ endpoint, accessed via the HTTP GET method, enables developers to retrieve a comprehensive list of all books available in the library. A simple request to this endpoint provides an array of book records, each containing details such as the book's title, author, ISBN, and other pertinent information.
+
+
+* LSM/ Book_detail/<int:pk> 
+GET /LSM/Book_detail/2
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+
+{
+    "BookID": 2,
+    "Book_number": 5,
+    "Title": "ABC",
+    "ISBN": "1234",
+    "PublishedDate": "2024-02-01",
+    "Genre": "ok"
+}
+The /LSM/Book_detail/{bookID}/ endpoint allows developers to retrieve detailed information about a specific book within the Library Management System using its unique BookID.
+
+
+* LSM/Book_info
+GET /LSM/Book_info
+HTTP 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+
+[
+    {
+        "DetailsID": 1,
+        "NumberOfPages": 3,
+        "Publisher": "Me",
+        "Language": "English",
+        "BookID": 2
+    }
+]
+The /LSM/Book_Detail/ endpoint serves as the entry point for assigning or updating details of a book within the Library Management System. This functionality is accomplished through the HTTP POST method. Developers can submit the necessary details, including the book's unique identifier, number of pages, publisher, language, or any other relevant information in the request body.
+
+
+
+
+
+
+LSM/ Book_borrow/ 
+The /LSM/Book_borrow/ endpoint facilitates the recording of the borrowing of a book within the Library Management System. This functionality is achieved through the HTTP POST method. Developers can submit the necessary details, including the user's unique identifier and the book's unique identifier, in the request body to link the user with the borrowed book
+
+
+[
+    {
+        "UserID": 1,
+        "BookID": 2,
+        "BorrowDate": "2024-02-01"
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LSM/Book_return/
+HTTP 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+
+[
+    {
+        "UserID": 1,
+        "BookID": 2,
+        "ReturnDate": null
+    }
+]
+
+
+The /LSM/Book_return/ endpoint is designed to update the Library Management System when a book is returned. This functionality is achieved through the HTTP POST method. Developers can submit the necessary details in the request body, including the user's unique identifier and the book's unique identifier, to signify the return of the borrowed book.
+
+
+* LSM/ Book_Borrow_list/  
+
+
+[
+    {
+        "BookID": 2
+    }
+]
+
+
+The /LSM/Book_Borrow_list/ endpoint provides developers with the capability to retrieve a comprehensive list of all books currently borrowed from the library. This functionality is executed through the HTTP GET method
